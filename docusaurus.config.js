@@ -12,7 +12,7 @@ module.exports = {
     announcementBar: {
       id: "support",
       content:
-        '⭐️ If you like Console Table Printer, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/console-styles/console-table-printer">GitHub</a>! ⭐️',
+        '⭐️ If you like Console Table Printer, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/ayonious/console-table-printer">GitHub</a>! ⭐️',
     },
     navbar: {
       title: "Console Table Printer",
@@ -22,7 +22,7 @@ module.exports = {
       },
       items: [
         {
-          href: "https://github.com/console-styles/console-table-printer",
+          href: "https://github.com/ayonious/console-table-printer",
           label: "GitHub",
           position: "right",
         },
@@ -71,7 +71,7 @@ module.exports = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/console-styles/console-table-printer",
+              href: "https://github.com/ayonious/console-table-printer",
             },
             {
               label: "Npmjs",
