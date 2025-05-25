@@ -6,13 +6,13 @@ module.exports = {
   baseUrl: "/", // Base URL for your project */
 
   favicon: "img/favicon.ico",
-  organizationName: "ayonious", // Usually your GitHub org/user name.
+  organizationName: "Console Styles", // Usually your GitHub org/user name.
   projectName: "docusaurus", // Usually your repo name.
   themeConfig: {
     announcementBar: {
       id: "support",
       content:
-        '⭐️ If you like Console Table Printer, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/ayonious/console-table-printer">GitHub</a>! ⭐️',
+        '⭐️ If you like Console Table Printer, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/console-styles/console-table-printer">GitHub</a>! ⭐️',
     },
     navbar: {
       title: "Console Table Printer",
@@ -22,7 +22,7 @@ module.exports = {
       },
       items: [
         {
-          href: "https://github.com/ayonious/console-table-printer",
+          href: "https://github.com/console-styles/console-table-printer",
           label: "GitHub",
           position: "right",
         },
@@ -71,7 +71,7 @@ module.exports = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/ayonious/console-table-printer",
+              href: "https://github.com/console-styles/console-table-printer",
             },
             {
               label: "Npmjs",
@@ -98,7 +98,7 @@ module.exports = {
           ],
           // this enabled the edit button for documentation
           editUrl:
-            "https://github.com/ayonious/console-table-docu/blob/master/",
+            "https://github.com/console-styles/console-table-docu/blob/master/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
