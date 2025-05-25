@@ -98,7 +98,7 @@ module.exports = {
           ],
           // this enabled the edit button for documentation
           editUrl:
-            "https://github.com/console-styles/console-table-docu/blob/master/",
+            "https://github.com/console-table-printer/console-table-docu/blob/master/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
