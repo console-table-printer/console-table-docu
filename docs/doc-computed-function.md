@@ -115,7 +115,7 @@ p.addRows([
 p.printTable();
 ```
 
-<img alt="Screenshot" src={useBaseUrl('img/examples/doc-computed-function/screenshot-complicated-1.png')}/>
+<img alt="Screenshot" src={useBaseUrl('img/examples/doc-computed-function/screenshot-complicated-2.png')}/>
 
 This example shows:
 1. Using `row` to check if a student passed
