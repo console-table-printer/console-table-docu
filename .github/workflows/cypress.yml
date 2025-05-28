@@ -10,9 +10,16 @@ jobs:
   cypress:
     runs-on: ubuntu-latest
     
+    # Add permissions needed for PR comments
+    permissions:
+      contents: read
+      pull-requests: write
+    
     strategy:
       matrix:
         node-version: [22.x]  # Latest LTS version
+      # Don't cancel other matrix jobs if one fails
+      fail-fast: false
     
     steps:
       - uses: actions/checkout@v4.1.1
@@ -40,6 +47,7 @@ jobs:
         run: yarn cypress install
       
       - name: Run Cypress tests
+        id: cypress
         uses: cypress-io/github-action@v5.8.3
         with:
           start: yarn start
@@ -62,4 +70,29 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
-          if-no-files-found: ignore 
+          if-no-files-found: ignore
+
+      # Add test summary to PR
+      - name: Add PR Comment
+        if: github.event_name == 'pull_request' && (success() || failure())
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const testStatus = '${{ steps.cypress.outcome }}' === 'success' ? '✅' : '❌';
+            const artifactsUrl = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
+            
+            const comment = `## Cypress Test Results ${testStatus}
+            
+            **Status:** ${testStatus === '✅' ? 'All tests passed!' : 'Some tests failed'}
+            
+            ${testStatus === '❌' ? `### Test Artifacts
+            - [View Screenshots and Videos](${artifactsUrl})` : ''}
+            
+            [View Full Test Run](${artifactsUrl})`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            }); 
