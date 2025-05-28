@@ -12,13 +12,13 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [22.x]  # Latest LTS version
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.1
       
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4.0.2
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
@@ -27,7 +27,7 @@ jobs:
         run: yarn install --frozen-lockfile
       
       - name: Get Cypress cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4.0.1
         id: cypress-cache
         with:
           path: ~/.cache/Cypress
@@ -40,7 +40,7 @@ jobs:
         run: yarn cypress install
       
       - name: Run Cypress tests
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v5.8.3
         with:
           start: yarn start
           wait-on: 'http://localhost:3000'
@@ -49,7 +49,7 @@ jobs:
           record: false
       
       - name: Upload Cypress screenshots
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.3.1
         if: failure()
         with:
           name: cypress-screenshots
@@ -57,7 +57,7 @@ jobs:
           if-no-files-found: ignore
       
       - name: Upload Cypress videos
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.3.1
         if: always()
         with:
           name: cypress-videos
