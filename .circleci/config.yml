@@ -1,4 +1,8 @@
 version: 2.1
+
+orbs:
+  codecov: codecov/codecov@3.3.0
+
 jobs:
   build:
     docker:
@@ -17,7 +21,28 @@ jobs:
             - node_modules
           key: deps-hash-{{ checksum "yarn.lock" }}
 
-      - run: yarn build
+      - run:
+          name: "Unit Tests"
+          command: |
+            mkdir -p ./reports/junit/
+            yarn test:ci
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+            JEST_JUNIT_OUTPUT_NAME: test-results.xml
+
+      - store_test_results:
+          path: ./reports/junit/
+
+      - codecov/upload:
+          file: ./coverage/lcov.info
+
+      - store_artifacts:
+          path: ./coverage
+          destination: coverage
+
+      - run:
+          name: "Build"
+          command: yarn build
       # does not work on circle ci because memory runs out
       # - run:
       #     name: "Integration Tests"
