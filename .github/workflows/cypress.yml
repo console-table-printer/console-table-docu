@@ -22,10 +22,10 @@ jobs:
       fail-fast: false
     
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.2.2
       
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4.0.2
+        uses: actions/setup-node@v4.4.0
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
@@ -48,7 +48,7 @@ jobs:
       
       - name: Run Cypress tests
         id: cypress
-        uses: cypress-io/github-action@v5.8.3
+        uses: cypress-io/github-action@v6.9.2
         with:
           start: yarn start
           wait-on: 'http://localhost:3000'
@@ -57,7 +57,7 @@ jobs:
           record: false
       
       - name: Upload Cypress screenshots
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v4.6.2
         if: failure()
         with:
           name: cypress-screenshots
@@ -65,7 +65,7 @@ jobs:
           if-no-files-found: ignore
       
       - name: Upload Cypress videos
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v4.6.2
         if: always()
         with:
           name: cypress-videos
@@ -75,7 +75,7 @@ jobs:
       # Add test summary to PR
       - name: Add PR Comment
         if: github.event_name == 'pull_request' && (success() || failure())
-        uses: actions/github-script@v7
+        uses: actions/github-script@v7.0.1
         with:
           script: |
             const testStatus = '${{ steps.cypress.outcome }}' === 'success' ? '✅' : '❌';
