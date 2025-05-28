@@ -22,7 +22,7 @@ jobs:
           name: "Unit Tests with Coverage"
           command: |
             mkdir -p ./reports/junit/
-            yarn test:ci --coverage
+            yarn test:ci --config=jest.config.js
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
             JEST_JUNIT_OUTPUT_NAME: test-results.xml
