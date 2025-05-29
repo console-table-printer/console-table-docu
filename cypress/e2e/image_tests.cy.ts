@@ -1,5 +1,19 @@
+interface Page {
+  url: string;
+  name: string;
+}
+
+interface Interception {
+  response?: {
+    statusCode: number;
+  };
+  request: {
+    url: string;
+  };
+}
+
 describe("Documentation Page Images", () => {
-  const pages = [
+  const pages: Page[] = [
     { url: "/docs", name: "Install and Quick start" },
     { url: "/docs/doc-table-instance-creation", name: "Create Table Instance" },
     { url: "/docs/doc-adding-rows", name: "Adding Rows" },
@@ -28,7 +42,7 @@ describe("Documentation Page Images", () => {
     cy.intercept('GET', '/img/**/*').as('imageRequest');
   });
 
-  pages.forEach(page => {
+  pages.forEach((page: Page) => {
     it(`should load all images properly on ${page.name} page`, () => {
       let imageRequestCount = 0;
       
@@ -51,7 +65,7 @@ describe("Documentation Page Images", () => {
       cy.get('img', { timeout: 10000 }).should('exist');
 
       // Get all images and verify their loading
-      cy.get('img').then($images => {
+      cy.get('img').then(($images) => {
         // Verify each image
         cy.wrap($images).each(($img, index) => {
           // Create a unique alias for this image
@@ -60,9 +74,10 @@ describe("Documentation Page Images", () => {
           
           // Wait for the image to be loaded
           cy.get(`@${imgId}`).should(($img) => {
-            expect($img[0].complete).to.be.true;
-            expect($img[0].naturalWidth).to.be.greaterThan(0);
-            expect($img[0].naturalHeight).to.be.greaterThan(0);
+            const img = $img[0] as HTMLImageElement;
+            expect(img.complete).to.be.true;
+            expect(img.naturalWidth).to.be.greaterThan(0);
+            expect(img.naturalHeight).to.be.greaterThan(0);
           });
           
           // Verify src attribute
@@ -73,9 +88,10 @@ describe("Documentation Page Images", () => {
       });
 
       // Verify all image requests were successful
-      cy.get('@imageRequestCounter.all').then((interceptions) => {
-        if (interceptions.length > 0) {
-          interceptions.forEach((interception) => {
+      cy.get('@imageRequestCounter.all').then((interceptions: unknown) => {
+        const interceptArray = interceptions as Interception[];
+        if (interceptArray.length > 0) {
+          interceptArray.forEach((interception) => {
             if (interception.response) {
               expect([200, 304]).to.include(interception.response.statusCode);
             } else {
@@ -120,8 +136,9 @@ describe("Documentation Page Images", () => {
       cy.wrap($img).as(imgId);
       
       cy.get(`@${imgId}`).then(($img) => {
-        const naturalWidth = $img[0].naturalWidth;
-        const naturalHeight = $img[0].naturalHeight;
+        const img = $img[0] as HTMLImageElement;
+        const naturalWidth = img.naturalWidth;
+        const naturalHeight = img.naturalHeight;
         
         // Images should have reasonable dimensions
         expect(naturalWidth).to.be.within(50, 2000);

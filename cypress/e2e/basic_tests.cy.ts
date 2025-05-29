@@ -13,13 +13,18 @@ describe("Integration Tests", () => {
     cy.contains("GET STARTED").click();
 
     // show default docs page
-    cy.contains("Install and Quick start");
-    cy.contains("Coloring");
-    cy.contains("Sort and Filter");
-    cy.contains("Alignment");
+    const expectedTexts: string[] = [
+      "Install and Quick start",
+      "Coloring",
+      "Sort and Filter",
+      "Alignment",
+      "Installation",
+      "Basic Example"
+    ];
 
-    cy.contains("Installation");
-    cy.contains("Basic Example");
+    expectedTexts.forEach((text: string) => {
+      cy.contains(text);
+    });
   });
 
   it("Docs Pages Works: Quick Start", () => {
@@ -31,4 +36,4 @@ describe("Integration Tests", () => {
 
     cy.contains("Detailed usage");
   });
-});
+}); 

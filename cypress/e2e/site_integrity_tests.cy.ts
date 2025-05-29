@@ -1,3 +1,7 @@
+interface MainPage {
+  title: string;
+}
+
 describe("Site Integrity Tests", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
@@ -46,7 +50,8 @@ describe("Site Integrity Tests", () => {
           cy.wrap($img)
             .should("be.visible")
             .and(($img) => {
-              expect($img[0].naturalWidth).to.be.greaterThan(0);
+              const img = $img[0] as HTMLImageElement;
+              expect(img.naturalWidth).to.be.greaterThan(0);
             });
         }
       });
@@ -58,16 +63,16 @@ describe("Site Integrity Tests", () => {
       cy.contains("GET STARTED").click();
     });
 
-    const mainPages = [
-      "Install and Quick start",
-      "Create Table Instance",
-      "Adding Rows"
+    const mainPages: MainPage[] = [
+      { title: "Install and Quick start" },
+      { title: "Create Table Instance" },
+      { title: "Adding Rows" }
     ];
 
-    mainPages.forEach(page => {
-      it(`should navigate to ${page}`, () => {
-        cy.contains(".theme-doc-sidebar-item-link", page).click();
-        cy.contains("h1", page).should("exist");
+    mainPages.forEach((page: MainPage) => {
+      it(`should navigate to ${page.title}`, () => {
+        cy.contains(".theme-doc-sidebar-item-link", page.title).click();
+        cy.contains("h1", page.title).should("exist");
       });
     });
   });
@@ -97,9 +102,9 @@ describe("Site Integrity Tests", () => {
   describe("Performance", () => {
     it("should load pages within acceptable time", () => {
       cy.window().then((win) => {
-        const perfData = win.performance.getEntriesByType("navigation")[0];
+        const perfData = win.performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming;
         expect(perfData.duration).to.be.lessThan(5000); // More lenient timeout of 5 seconds
       });
     });
   });
-});
+}); 
