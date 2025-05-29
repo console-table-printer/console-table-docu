@@ -1,3 +1,8 @@
+interface SidebarLink {
+  text: string;
+  url: string;
+}
+
 describe("Link Tests", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
@@ -62,7 +67,7 @@ describe("Link Tests", () => {
 
     it("should have working sidebar navigation links", () => {
       // Test all sidebar links
-      const sidebarLinks = [
+      const sidebarLinks: SidebarLink[] = [
         { text: "Install and Quick start", url: "/docs" },
         { text: "Create Table Instance", url: "/docs/doc-table-instance-creation" },
         { text: "Adding Rows", url: "/docs/doc-adding-rows" },
@@ -83,7 +88,7 @@ describe("Link Tests", () => {
         { text: "Quick Start", url: "/docs/doc-cli-install-quick-start" }
       ];
 
-      sidebarLinks.forEach(link => {
+      sidebarLinks.forEach((link: SidebarLink) => {
         cy.contains(link.text).click();
         cy.url().should("include", link.url);
         // Verify page content is loaded
