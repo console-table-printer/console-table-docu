@@ -1,6 +1,5 @@
 # Documentation for Console Table Printer
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/7r63R5aDp9FqLPmKw1GubA/JQbP6Vwr3WZg4UzC4KAUaY/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/7r63R5aDp9FqLPmKw1GubA/JQbP6Vwr3WZg4UzC4KAUaY/tree/master)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/19df54dc-98e0-42a3-a348-1d54477f6522/deploy-status)](https://app.netlify.com/sites/console-table/deploys)
 [![codecov](https://codecov.io/gh/console-table-printer/console-table-docu/graph/badge.svg?token=GAABSQBCLG)](https://codecov.io/gh/console-table-printer/console-table-docu)
 [![Cypress Tests](https://github.com/console-table-printer/console-table-docu/actions/workflows/cypress.yml/badge.svg)](https://github.com/console-table-printer/console-table-docu/actions/workflows/cypress.yml)
