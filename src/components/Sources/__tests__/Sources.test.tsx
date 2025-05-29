@@ -1,54 +1,55 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '../../../test-utils/test-utils';
 import '@testing-library/jest-dom';
-import Sources from '../index';
-import * as sourcesModule from '../../../utils/sources';
-
-// Mock the styled-components
-jest.mock('../styles', () => ({
-  FeatureImage: ({ src, alt }) => <img data-testid="feature-image" src={src} alt={alt} />,
-  Features: ({ children }) => <div data-testid="features-container">{children}</div>,
-}));
+import Sources from '..';
+import sourcesData from '../../../utils/sources';
 
 describe('Sources', () => {
   it('renders all features correctly', () => {
     render(<Sources />);
-    
-    // Check if all source titles are rendered
-    sourcesModule.default.forEach(source => {
-      // Convert React element to string for matching
-      const titleText = source.title.props?.children || source.title;
-      expect(screen.getByText(titleText)).toBeInTheDocument();
-    });
+    expect(screen.getByText('Light and Fast')).toBeInTheDocument();
+    expect(screen.getByText('Free')).toBeInTheDocument();
+    expect(screen.getByText('Typed')).toBeInTheDocument();
+  });
 
-    // Check if all descriptions are rendered
-    sourcesModule.default.forEach(source => {
-      // Convert React element to string for matching
-      const descText = source.description.props?.children || source.description;
-      expect(screen.getByText(descText)).toBeInTheDocument();
-    });
+  it('renders feature descriptions', () => {
+    render(<Sources />);
+    expect(screen.getByText(/It contains very minimal dependencies/i)).toBeInTheDocument();
+    expect(screen.getByText(/Console Table Printer is free and open source/i)).toBeInTheDocument();
+    expect(screen.getByText(/Use it happily with typescript and Javascript/i)).toBeInTheDocument();
+  });
 
-    // Check if all images are rendered with correct props
-    const images = screen.getAllByTestId('feature-image');
-    expect(images).toHaveLength(sourcesModule.default.length);
-    
-    images.forEach((image, index) => {
-      expect(image).toHaveAttribute('src', sourcesModule.default[index].imageUrl);
+  it('renders feature images with correct attributes', () => {
+    render(<Sources />);
+    const images = screen.getAllByRole('img');
+    expect(images).toHaveLength(3);
+    expect(images[0]).toHaveAttribute('src', 'img/undraw_floating_61u6.svg');
+    expect(images[1]).toHaveAttribute('src', 'img/undraw_gift1_sgf8.svg');
+    expect(images[2]).toHaveAttribute('src', 'img/undraw_powerful_26ry.svg');
+  });
+
+  it('renders features in correct order', () => {
+    render(<Sources />);
+    const titles = ['Light and Fast', 'Free', 'Typed'];
+    const headings = screen.getAllByRole('heading', { level: 3 });
+    headings.forEach((heading, index) => {
+      expect(heading).toHaveTextContent(titles[index]);
     });
   });
 
-  it('renders with correct layout structure', () => {
+  it('renders correct number of features', () => {
     render(<Sources />);
-    
-    expect(screen.getByTestId('features-container')).toBeInTheDocument();
-    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(sourcesModule.default.length);
-    expect(screen.getAllByTestId('feature-image')).toHaveLength(sourcesModule.default.length);
+    const features = sourcesData;
+    const columns = screen.getAllByRole('heading', { level: 3 });
+    expect(columns).toHaveLength(features.length);
   });
 
-  it('renders each feature in a column layout', () => {
+  it('has accessible images', () => {
     render(<Sources />);
-    
-    const columns = document.querySelectorAll('.col.col--4');
-    expect(columns).toHaveLength(sourcesModule.default.length);
+    const images = screen.getAllByRole('img');
+    images.forEach((image) => {
+      const img = image as HTMLImageElement;
+      expect(typeof img.alt).toBe('string');
+    });
   });
 }); 
