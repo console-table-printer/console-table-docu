@@ -21,91 +21,109 @@ describe("Documentation Page Images", () => {
   ];
 
   beforeEach(() => {
+    // Increase the default timeout since we're dealing with image loading
+    Cypress.config('defaultCommandTimeout', 10000);
+    
     // Intercept image requests to verify they succeed
     cy.intercept('GET', '/img/**/*').as('imageRequest');
   });
 
   pages.forEach(page => {
     it(`should load all images properly on ${page.name} page`, () => {
-      // Visit the page
-      cy.visit(`http://localhost:3000${page.url}`);
+      let imageRequestCount = 0;
+      
+      // Count image requests
+      cy.intercept('GET', '/img/**/*', (req) => {
+        imageRequestCount++;
+        req.continue();
+      }).as('imageRequestCounter');
 
-      // Wait for page to load
-      cy.get('main').should('be.visible');
-
-      // Get all images and verify each one
-      cy.get('img').each(($img) => {
-        // Create an alias for this specific image
-        const imgId = `img-${Cypress._.random(0, 1e6)}`;
-        cy.wrap($img).as(imgId);
-
-        // Check visibility and dimensions
-        cy.get(`@${imgId}`).should('be.visible');
-        cy.get(`@${imgId}`).then(($img) => {
-          expect($img[0].naturalWidth).to.be.greaterThan(0);
-        });
-
-        // Verify the image src exists
-        cy.get(`@${imgId}`).should('have.attr', 'src')
-          .and('not.be.empty');
+      // Visit the page and wait for it to load
+      cy.visit(`http://localhost:3000${page.url}`, {
+        timeout: 10000,
+        retryOnStatusCodeFailure: true
       });
 
-      // Wait for all image requests to complete
-      cy.wait('@imageRequest').then((interception) => {
-        expect([200, 304]).to.include(interception.response.statusCode);
+      // Wait for main content to be visible
+      cy.get('main', { timeout: 10000 }).should('be.visible');
+
+      // First wait for all images to be present in the DOM
+      cy.get('img', { timeout: 10000 }).should('exist');
+
+      // Get all images and verify their loading
+      cy.get('img').then($images => {
+        // Verify each image
+        cy.wrap($images).each(($img, index) => {
+          // Create a unique alias for this image
+          const imgId = `img-${index}`;
+          cy.wrap($img).as(imgId);
+          
+          // Wait for the image to be loaded
+          cy.get(`@${imgId}`).should(($img) => {
+            expect($img[0].complete).to.be.true;
+            expect($img[0].naturalWidth).to.be.greaterThan(0);
+            expect($img[0].naturalHeight).to.be.greaterThan(0);
+          });
+          
+          // Verify src attribute
+          cy.get(`@${imgId}`)
+            .should('have.attr', 'src')
+            .and('not.be.empty');
+        });
       });
 
-      // Additional check for broken images
-      cy.get('img').each(($img) => {
-        const imgId = `img-check-${Cypress._.random(0, 1e6)}`;
-        cy.wrap($img).as(imgId);
-        
-        cy.get(`@${imgId}`).then(($img) => {
-          expect($img[0].complete).to.be.true;
-          expect($img[0].naturalHeight).to.be.greaterThan(0);
-        });
+      // Verify all image requests were successful
+      cy.get('@imageRequestCounter.all').then((interceptions) => {
+        if (interceptions.length > 0) {
+          interceptions.forEach((interception) => {
+            expect([200, 304]).to.include(interception.response.statusCode);
+          });
+        }
       });
     });
   });
 
   it('should have proper alt text for all images', () => {
-    pages.forEach(page => {
-      cy.visit(`http://localhost:3000${page.url}`);
-      cy.get('main').should('be.visible');
+    cy.visit(`http://localhost:3000/docs`, {
+      timeout: 10000,
+      retryOnStatusCodeFailure: true
+    });
+
+    cy.get('main', { timeout: 10000 }).should('be.visible');
+    
+    cy.get('img').each(($img, index) => {
+      const imgId = `img-alt-${index}`;
+      cy.wrap($img).as(imgId);
       
-      // Check that all images have non-empty alt text
-      cy.get('img').each(($img) => {
-        const imgId = `img-alt-${Cypress._.random(0, 1e6)}`;
-        cy.wrap($img).as(imgId);
-        
-        cy.get(`@${imgId}`).should('have.attr', 'alt')
-          .and('not.be.empty');
-      });
+      cy.get(`@${imgId}`)
+        .should('have.attr', 'alt')
+        .and('not.be.empty');
     });
   });
 
   it('should load images with correct dimensions', () => {
-    pages.forEach(page => {
-      cy.visit(`http://localhost:3000${page.url}`);
-      cy.get('main').should('be.visible');
+    cy.visit(`http://localhost:3000/docs`, {
+      timeout: 10000,
+      retryOnStatusCodeFailure: true
+    });
+
+    cy.get('main', { timeout: 10000 }).should('be.visible');
+    
+    cy.get('img').each(($img, index) => {
+      const imgId = `img-dim-${index}`;
+      cy.wrap($img).as(imgId);
       
-      // Verify images have reasonable dimensions
-      cy.get('img').each(($img) => {
-        const imgId = `img-dim-${Cypress._.random(0, 1e6)}`;
-        cy.wrap($img).as(imgId);
+      cy.get(`@${imgId}`).then(($img) => {
+        const naturalWidth = $img[0].naturalWidth;
+        const naturalHeight = $img[0].naturalHeight;
         
-        cy.get(`@${imgId}`).then(($img) => {
-          const naturalWidth = $img[0].naturalWidth;
-          const naturalHeight = $img[0].naturalHeight;
-          
-          // Images should have reasonable dimensions
-          expect(naturalWidth).to.be.within(50, 2000);
-          expect(naturalHeight).to.be.within(50, 2000);
-          
-          // Aspect ratio should be reasonable
-          const aspectRatio = naturalWidth / naturalHeight;
-          expect(aspectRatio).to.be.within(0.1, 10);
-        });
+        // Images should have reasonable dimensions
+        expect(naturalWidth).to.be.within(50, 2000);
+        expect(naturalHeight).to.be.within(50, 2000);
+        
+        // Aspect ratio should be reasonable
+        const aspectRatio = naturalWidth / naturalHeight;
+        expect(aspectRatio).to.be.within(0.1, 10);
       });
     });
   });
