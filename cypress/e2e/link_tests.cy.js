@@ -89,6 +89,19 @@ describe("Link Tests", () => {
         // Verify page content is loaded
         cy.get("main").should("exist");
         cy.get("main").should("be.visible");
+        
+        // Additional checks for Special Chars and emojis page
+        if (link.text === "Special Chars and emojis") {
+          // Verify both sections are present
+          cy.contains("Special chars").should("be.visible");
+          cy.contains("Newlines in cells").should("be.visible");
+          
+          // Verify code examples
+          cy.get('pre[class*="language-"]').should('have.length.at.least', 2);
+          
+          // Verify screenshots
+          cy.get('img[alt="Screenshot"]').should('have.length.at.least', 2);
+        }
       });
     });
   });

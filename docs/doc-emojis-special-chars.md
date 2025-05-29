@@ -33,7 +33,7 @@ bundle.printTable();
 
 ## Newlines in cells
 
-Starting from version 2.12.1, the library properly handles newline characters (`\n`) in table cells. When a cell contains newlines, the content will be displayed on multiple lines while maintaining the table structure.
+The library properly handles newline characters (`\n`) in table cells. When a cell contains newlines, the content will be displayed on multiple lines while maintaining the table structure.
 
 ```javascript
 const p = new Table({
