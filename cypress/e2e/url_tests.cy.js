@@ -87,9 +87,31 @@ describe("Testing Each Documentation Page", () => {
     cy.contains("You can configure the border of the table by passing style in Table constructor");
   });
 
-  it("Special Chars and emojis page contains correct headlines", () => {
+  it("Special Chars and emojis page contains correct headlines and examples", () => {
     cy.visit("http://localhost:3000/docs/doc-emojis-special-chars");
+    
+    // Test main sections
     cy.contains("Special chars");
+    cy.contains("Newlines in cells");
+    
+    // Test code blocks
+    cy.get('pre[class*="language-"]').should('have.length.at.least', 2);
+    
+    // Test content structure
+    cy.contains("Multiline Text Examples");
+    
+    // Test example categories
+    cy.contains("Simple multiline");
+    cy.contains("Product description with features");
+    cy.contains("Long text wrapping");
+    cy.contains("Technical specifications");
+    cy.contains("Product warning");
+    
+    // Test feature list
+    cy.contains("Display multi-line text in a structured way");
+    cy.contains("Show formatted content with line breaks");
+    cy.contains("Present hierarchical or grouped information");
+    cy.contains("Format long text content to fit within column width constraints");
   });
 
   it("Render Console Output page contains correct headlines", () => {

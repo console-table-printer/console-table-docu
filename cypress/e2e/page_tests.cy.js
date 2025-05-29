@@ -93,6 +93,25 @@ describe("Testing Each Documentation Page", () => {
   it("Special Chars and emojis page contains correct headlines", () => {
     cy.contains("Special Chars and emojis").click();
     cy.contains("Special chars");
+    
+    // Test newlines section
+    cy.contains("Newlines in cells");
+    
+    // Test code examples
+    cy.contains("Multiline Text Examples");
+    cy.contains("Product description with features");
+    cy.contains("Technical specifications");
+    cy.contains("Product warning");
+    
+    // Test example content
+    cy.contains("Laptop");
+    cy.contains("Smartphone");
+    cy.contains("Headphones");
+    cy.contains("Camera");
+    cy.contains("Battery Pack");
+    
+    // Verify screenshot presence
+    cy.get('img[alt="Screenshot"]').should('have.length.at.least', 2);
   });
 
   it("Render Console Output page contains correct headlines", () => {
