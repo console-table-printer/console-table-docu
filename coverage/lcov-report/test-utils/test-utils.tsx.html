@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for utils/sources.tsx</title>
+    <title>Code coverage report for test-utils/test-utils.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">utils</a> sources.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">test-utils</a> test-utils.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -88,60 +88,57 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { render } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
 &nbsp;
-const sources = [
-  {
-    title: &lt;&gt;Light and Fast&lt;/&gt;,
-    imageUrl: "img/undraw_floating_61u6.svg",
-    description: &lt;&gt;It contains very minimal dependencies.&lt;/&gt;,
+const theme = {
+  colors: {
+    primary: 'rgb(50, 120, 230)',
   },
-  {
-    title: &lt;&gt;Free&lt;/&gt;,
-    imageUrl: "img/undraw_gift1_sgf8.svg",
-    description: (
-      &lt;&gt;
-        Console Table Printer is free and open source under MIT license. It has
-        very minimal dependencies
-      &lt;/&gt;
-    ),
-  },
-  {
-    title: &lt;&gt;Typed&lt;/&gt;,
-    imageUrl: "img/undraw_powerful_26ry.svg",
-    description: &lt;&gt;Use it happily with typescript and Javascript&lt;/&gt;,
-  },
-];
+};
 &nbsp;
-export default sources;
-&nbsp;</pre></td></tr></table></pre>
+const AllTheProviders = ({ children }: { children: React.ReactNode }) =&gt; {
+  return (
+    &lt;ThemeProvider theme={theme}&gt;
+      {children}
+    &lt;/ThemeProvider&gt;
+  );
+};
+&nbsp;
+const customRender = (ui: React.ReactElement, options = {}) =&gt;
+  render(ui, { wrapper: AllTheProviders, ...options });
+&nbsp;
+// re-export everything
+export * from '@testing-library/react';
+&nbsp;
+// override render method
+export { customRender as render }; </pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
