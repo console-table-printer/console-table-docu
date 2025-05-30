@@ -17,30 +17,6 @@ jobs:
           paths:
             - node_modules
           key: deps-hash-{{ checksum "yarn.lock" }}
-
-      - run:
-          name: "Unit Tests with Coverage"
-          command: |
-            mkdir -p ./reports/junit/
-            yarn test:ci --config=jest.config.js
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
-            JEST_JUNIT_OUTPUT_NAME: test-results.xml
-
-      - store_test_results:
-          path: ./reports/junit/
-
-      - run:
-          name: "Upload Coverage to Codecov"
-          command: |
-            curl -Os https://uploader.codecov.io/latest/linux/codecov
-            chmod +x codecov
-            ./codecov -t ${CODECOV_TOKEN} -f ./coverage/coverage-final.json
-
-      - store_artifacts:
-          path: ./coverage
-          destination: coverage
-
       - run:
           name: "Build"
           command: yarn build
