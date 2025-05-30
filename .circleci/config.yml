@@ -44,7 +44,3 @@ jobs:
       - run:
           name: "Build"
           command: yarn build
-      # does not work on circle ci because memory runs out
-      # - run:
-      #     name: "Integration Tests"
-      #     command: yarn test-integration
