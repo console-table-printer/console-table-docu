@@ -1,10 +1,10 @@
-interface PageTest {
+interface PageTestInterface {
   title: string;
   headlines: string[];
 }
 
 describe("Testing Each Documentation Page", () => {
-  const pages: PageTest[] = [
+  const pages: PageTestInterface[] = [
     {
       title: "Install and Quick start",
       headlines: ["Installation", "Basic Example"]
@@ -103,6 +103,22 @@ describe("Testing Each Documentation Page", () => {
     {
       title: "Quick Start",
       headlines: ["Synopsis", "Installation", "Basic Example", "Detailed usage"]
+    },
+    {
+      title: "CLI Quick Start",
+      headlines: ["Installation", "Basic Example"]
+    },
+    {
+      title: "Homebrew",
+      headlines: [
+        "Quick Install",
+        "Usage",
+        "Show help",
+        "Simple Table",
+        "Use custom column styles",
+        "Change table title",
+        "Uninstallation"
+      ]
     }
   ];
 
@@ -112,7 +128,7 @@ describe("Testing Each Documentation Page", () => {
     cy.contains("GET STARTED").click();
   });
 
-  pages.forEach((page: PageTest) => {
+  pages.forEach((page: PageTestInterface) => {
     it(`${page.title} page contains correct headlines`, () => {
       cy.contains(page.title).click();
       

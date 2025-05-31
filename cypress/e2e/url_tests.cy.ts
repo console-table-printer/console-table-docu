@@ -128,6 +128,11 @@ describe("Testing Each Documentation Page", () => {
       url: "/docs/doc-cli-install-quick-start",
       title: "CLI Quick Start",
       headlines: ["Synopsis", "Installation", "Basic Example", "Detailed usage"]
+    },
+    {
+      url: "/docs/doc-cli-brew",
+      title: "CLI Homebrew",
+      headlines: ["Quick Install", "Usage", "Change table title", "Use custom column styles", "Uninstallation", "Notes"]
     }
   ];
 

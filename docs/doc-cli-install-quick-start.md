@@ -1,7 +1,7 @@
 ---
 id: doc-cli-install-quick-start
 title: Quick Start
-sidebar_label: Quick Start
+sidebar_label: CLI Quick Start
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';

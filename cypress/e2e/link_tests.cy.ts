@@ -85,7 +85,8 @@ describe("Link Tests", () => {
         { text: "Special Chars and emojis", url: "/docs/doc-emojis-special-chars" },
         { text: "Render Console Output", url: "/docs/doc-render-console" },
         { text: "Typescript", url: "/docs/doc-typescript" },
-        { text: "Quick Start", url: "/docs/doc-cli-install-quick-start" }
+        { text: "CLI Quick Start", url: "/docs/doc-cli-install-quick-start" },
+        { text: "Homebrew", url: "/docs/doc-cli-brew" }
       ];
 
       sidebarLinks.forEach((link: SidebarLink) => {
