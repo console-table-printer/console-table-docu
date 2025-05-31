@@ -11,7 +11,7 @@ describe("Link Tests", () => {
   describe("Navigation Links", () => {
     it("should have working header navigation links", () => {
       // Test GitHub link in header
-      cy.get('a[href="https://github.com/ayonious/console-table-printer"]')
+      cy.get('a[href="https://github.com/console-table-printer/console-table-printer"]')
         .should("have.attr", "target", "_blank")
         .should("have.attr", "rel", "noopener noreferrer");
 
@@ -48,7 +48,7 @@ describe("Link Tests", () => {
     it("should have working external links in footer", () => {
       // Test GitHub link in footer
       cy.get('footer')
-        .find('a[href="https://github.com/ayonious/console-table-printer"]')
+        .find('a[href="https://github.com/console-table-printer/console-table-printer"]')
         .should("have.attr", "target", "_blank")
         .should("have.attr", "rel", "noopener noreferrer");
 
@@ -85,7 +85,8 @@ describe("Link Tests", () => {
         { text: "Special Chars and emojis", url: "/docs/doc-emojis-special-chars" },
         { text: "Render Console Output", url: "/docs/doc-render-console" },
         { text: "Typescript", url: "/docs/doc-typescript" },
-        { text: "Quick Start", url: "/docs/doc-cli-install-quick-start" }
+        { text: "CLI Quick Start", url: "/docs/doc-cli-install-quick-start" },
+        { text: "Homebrew", url: "/docs/doc-cli-brew" }
       ];
 
       sidebarLinks.forEach((link: SidebarLink) => {
@@ -114,7 +115,7 @@ describe("Link Tests", () => {
   describe("Announcement Bar Link", () => {
     it("should have working GitHub star link", () => {
       cy.get('div[class*="announcementBarContent"]')
-        .find('a[href="https://github.com/ayonious/console-table-printer"]')
+        .find('a[href="https://github.com/console-table-printer/console-table-printer"]')
         .should("have.attr", "target", "_blank")
         .should("have.attr", "rel", "noopener noreferrer");
     });

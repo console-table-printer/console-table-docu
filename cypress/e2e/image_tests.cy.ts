@@ -31,7 +31,8 @@ describe("Documentation Page Images", () => {
     { url: "/docs/doc-emojis-special-chars", name: "Special Chars and emojis" },
     { url: "/docs/doc-render-console", name: "Render Console Output" },
     { url: "/docs/doc-typescript", name: "Typescript" },
-    { url: "/docs/doc-cli-install-quick-start", name: "CLI Quick Start" }
+    { url: "/docs/doc-cli-install-quick-start", name: "CLI Quick Start" },
+    { url: "/docs/doc-cli-brew", name: "CLI Homebrew" }
   ];
 
   beforeEach(() => {
