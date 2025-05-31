@@ -20,6 +20,9 @@ module.exports = {
       "doc-render-console",
       "doc-typescript",
     ],
-    "Table Printer CLI": ["doc-cli-install-quick-start"],
+    "Table Printer CLI": [
+      "doc-cli-install-quick-start",
+      "doc-cli-brew"
+    ],
   },
 };
