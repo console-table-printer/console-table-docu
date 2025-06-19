@@ -24,5 +24,11 @@ module.exports = {
       "doc-cli-install-quick-start",
       "doc-cli-brew"
     ],
+    "API Reference": [
+      "api/core-functions",
+      "api/table-methods",
+      "api/configuration",
+      "api/advanced-features",
+    ],
   },
 };
