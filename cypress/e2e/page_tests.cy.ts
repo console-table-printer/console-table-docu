@@ -36,7 +36,7 @@ describe("Testing Each Documentation Page", () => {
     },
     {
       title: "Sort and Filter",
-      headlines: ["Sort", "Filter"]
+      headlines: ["Sort", "Filter", "Advanced Sorting and Filtering", "Multi-Level Sorting", "Complex Filtering"]
     },
     {
       title: "Alignment",
@@ -49,7 +49,11 @@ describe("Testing Each Documentation Page", () => {
     {
       title: "Calculated Columns",
       headlines: [
-        "Sometimes you need a new column added automatically whose val is dependent on other fields in the same row"
+        "Sometimes you need a new column added automatically whose val is dependent on other fields in the same row",
+        "Using All Parameters",
+        "Advanced Examples",
+        "Using Row Index for Ranking",
+        "Complex Computations with Multiple Subjects"
       ]
     },
     {
