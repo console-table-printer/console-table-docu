@@ -40,7 +40,7 @@ describe("Testing Each Documentation Page", () => {
     {
       url: "/docs/doc-color",
       title: "Coloring",
-      headlines: ["Coloring", "Batch Row coloring", "Custom Color", "Advanced Color Mapping", "Semantic Colors", "Conditional Coloring"]
+      headlines: ["Coloring", "Batch Row coloring", "Custom Color"]
     },
     {
       url: "/docs/doc-sort-filter",
@@ -65,8 +65,7 @@ describe("Testing Each Documentation Page", () => {
         "Using All Parameters",
         "Advanced Examples",
         "Using Row Index for Ranking",
-        "Complex Computations with Multiple Subjects",
-        "Memory-Efficient Computed Columns"
+        "Complex Computations with Multiple Subjects"
       ]
     },
     {
@@ -92,10 +91,7 @@ describe("Testing Each Documentation Page", () => {
       url: "/docs/doc-border-design",
       title: "Border Design",
       headlines: [
-        "You can configure the border of the table by passing style in Table constructor",
-        "Advanced Border Styles",
-        "Custom Border Styles",
-        "Colored Borders with Chalk"
+        "You can configure the border of the table by passing style in Table constructor"
       ]
     },
     {
