@@ -347,21 +347,3 @@ interface ColumnConfig {
   minLen?: number;
 }
 ```
-
-## Performance Tips
-
-1. **Batch Operations:** Use `addRows()` instead of multiple `addRow()` calls for better performance
-2. **Column Pre-definition:** Define columns in constructor when possible
-3. **Method Chaining:** Chain methods to reduce variable assignments
-4. **Render vs Print:** Use `render()` when you need the string output for further processing
-5. **Memory Management:** For large datasets, consider filtering data before adding to table
-
-## Error Handling
-
-Methods handle various error scenarios:
-
-1. **Invalid Row Data:** Validates row object structure
-2. **Missing Column Names:** Throws error for undefined columns
-3. **Invalid Options:** Falls back to defaults for invalid options
-4. **Empty Data:** Handles empty arrays and objects gracefully
-5. **Type Mismatches:** Converts data types when possible 
