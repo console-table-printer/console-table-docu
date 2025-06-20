@@ -55,3 +55,75 @@ p.printTable();
 ```
 
 <img alt="Screenshot" src={useBaseUrl('img/examples/doc-sort-filter/filter.png')}/>
+
+## Advanced Sorting and Filtering
+
+### Multi-Level Sorting
+
+```javascript
+const { Table } = require("console-table-printer");
+
+const table = new Table({
+  columns: [
+    { name: "department", alignment: "left" },
+    { name: "name", alignment: "left" },
+    { name: "salary", alignment: "right" }
+  ],
+  sort: (row1, row2) => {
+    // First sort by department
+    const deptCompare = row1.department.localeCompare(row2.department);
+    if (deptCompare !== 0) return deptCompare;
+    
+    // Then sort by salary (descending)
+    return row2.salary - row1.salary;
+  }
+});
+
+table.addRows([
+  { department: "Engineering", name: "Alice", salary: 85000 },
+  { department: "Engineering", name: "Bob", salary: 90000 },
+  { department: "Marketing", name: "Charlie", salary: 70000 },
+  { department: "Marketing", name: "David", salary: 75000 },
+  { department: "Sales", name: "Eve", salary: 65000 }
+]);
+
+table.printTable();
+```
+
+<img alt="Screenshot" src={useBaseUrl('img/examples/doc-sort-filter/multi-level-sort.png')}/>
+
+### Complex Filtering
+
+```javascript
+const { Table } = require("console-table-printer");
+
+const table = new Table({
+  columns: [
+    { name: "id", alignment: "left" },
+    { name: "name", alignment: "left" },
+    { name: "age", alignment: "right" },
+    { name: "department", alignment: "left" },
+    { name: "salary", alignment: "right" }
+  ],
+  filter: (row) => {
+    // Multiple conditions
+    const isAdult = row.age >= 18;
+    const isHighSalary = row.salary >= 50000;
+    const isEngineering = row.department === "Engineering";
+    
+    // Complex logic
+    return isAdult && (isHighSalary || isEngineering);
+  }
+});
+
+table.addRows([
+  { id: 1, name: "Alice", age: 25, department: "Engineering", salary: 85000 },
+  { id: 2, name: "Bob", age: 17, department: "Marketing", salary: 45000 },
+  { id: 3, name: "Charlie", age: 30, department: "Sales", salary: 60000 },
+  { id: 4, name: "David", age: 22, department: "Engineering", salary: 40000 }
+]);
+
+table.printTable();
+```
+
+<img alt="Screenshot" src={useBaseUrl('img/examples/doc-sort-filter/complex-filter.png')}/>

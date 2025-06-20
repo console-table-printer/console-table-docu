@@ -28,7 +28,6 @@ module.exports = {
       "api/core-functions",
       "api/table-methods",
       "api/configuration",
-      "api/advanced-features",
     ],
   },
 };

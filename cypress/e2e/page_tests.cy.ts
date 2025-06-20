@@ -32,11 +32,11 @@ describe("Testing Each Documentation Page", () => {
     },
     {
       title: "Coloring",
-      headlines: ["Coloring", "Batch Row coloring", "Custom Color"]
+      headlines: ["Coloring", "Batch Row coloring", "Custom Color", "Advanced Color Mapping", "Semantic Colors", "Conditional Coloring"]
     },
     {
       title: "Sort and Filter",
-      headlines: ["Sort", "Filter"]
+      headlines: ["Sort", "Filter", "Advanced Sorting and Filtering", "Multi-Level Sorting", "Complex Filtering"]
     },
     {
       title: "Alignment",
@@ -49,7 +49,12 @@ describe("Testing Each Documentation Page", () => {
     {
       title: "Calculated Columns",
       headlines: [
-        "Sometimes you need a new column added automatically whose val is dependent on other fields in the same row"
+        "Sometimes you need a new column added automatically whose val is dependent on other fields in the same row",
+        "Using All Parameters",
+        "Advanced Examples",
+        "Using Row Index for Ranking",
+        "Complex Computations with Multiple Subjects",
+        "Memory-Efficient Computed Columns"
       ]
     },
     {
@@ -71,7 +76,10 @@ describe("Testing Each Documentation Page", () => {
     {
       title: "Border Design",
       headlines: [
-        "You can configure the border of the table by passing style in Table constructor"
+        "You can configure the border of the table by passing style in Table constructor",
+        "Advanced Border Styles",
+        "Custom Border Styles",
+        "Colored Borders with Chalk"
       ]
     },
     {

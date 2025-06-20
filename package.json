@@ -19,6 +19,8 @@
     "@docusaurus/core": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
     "@docusaurus/remark-plugin-npm2yarn": "3.8.1",
+    "chalk": "^5.4.1",
+    "console-table-printer": "^2.14.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "styled-components": "^6.1.19"

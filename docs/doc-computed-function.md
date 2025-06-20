@@ -123,3 +123,94 @@ This example shows:
 3. Using `array` to compare scores with class average
 
 The output will show each student's score, their pass/fail status, student number, and how they compare to the class average.
+
+## Advanced Examples
+
+### Using Row Index for Ranking
+
+```javascript
+const { Table } = require("console-table-printer");
+
+const table = new Table({
+  columns: [
+    { name: "name", alignment: "left" },
+    { name: "score", alignment: "right" }
+  ],
+  computedColumns: [
+    {
+      name: "rank",
+      function: (row, index) => `#${index + 1}`
+    },
+    {
+      name: "percentage",
+      function: (row, index, array) => {
+        const maxScore = Math.max(...array.map(r => r.score));
+        return `${((row.score / maxScore) * 100).toFixed(1)}%`;
+      }
+    }
+  ]
+});
+
+table.addRows([
+  { name: "Alice", score: 85 },
+  { name: "Bob", score: 92 },
+  { name: "Charlie", score: 78 }
+]);
+
+table.printTable();
+```
+
+<img alt="Screenshot" src={useBaseUrl('img/examples/doc-computed-function/ScreenshotRow-Index-for-Ranking.png')}/>
+
+### Complex Computations with Multiple Subjects
+
+```javascript
+const { Table } = require("console-table-printer");
+
+const table = new Table({
+  columns: [
+    { name: "name", alignment: "left" },
+    { name: "math", alignment: "right" },
+    { name: "science", alignment: "right" },
+    { name: "english", alignment: "right" }
+  ],
+  computedColumns: [
+    {
+      name: "average",
+      function: (row) => {
+        const scores = [row.math, row.science, row.english];
+        return (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
+      }
+    },
+    {
+      name: "grade",
+      function: (row) => {
+        const avg = parseFloat(row.average);
+        if (avg >= 90) return "A";
+        if (avg >= 80) return "B";
+        if (avg >= 70) return "C";
+        if (avg >= 60) return "D";
+        return "F";
+      }
+    },
+    {
+      name: "status",
+      function: (row, index, array) => {
+        const avg = parseFloat(row.average);
+        const classAvg = array.reduce((sum, r) => sum + parseFloat(r.average), 0) / array.length;
+        return avg > classAvg ? "Above Average" : "Below Average";
+      }
+    }
+  ]
+});
+
+table.addRows([
+  { name: "Alice", math: 85, science: 90, english: 88 },
+  { name: "Bob", math: 92, science: 88, english: 85 },
+  { name: "Charlie", math: 78, science: 82, english: 80 }
+]);
+
+table.printTable();
+```
+
+<img alt="Screenshot" src={useBaseUrl('img/examples/doc-computed-function/Screenshot-multiple-subjects.png')}/>
