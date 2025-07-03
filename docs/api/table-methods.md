@@ -235,8 +235,8 @@ console.log(tableString);
 **Advanced Usage:**
 ```javascript
 const table = new Table({
-  title: "User Report",
-  style: "fatBorder"
+  title: "User Report"
+  // Default style will be used (omit style property for default borders)
 });
 
 table.addRows([

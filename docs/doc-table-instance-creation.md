@@ -55,7 +55,7 @@ new Table(["column1", "column2", "column3"]);
 
 ```javascript
 new Table({
-  style: "fatBorder", //style of border of the table, (optional)
+  // Default style will be used (omit style property for default borders)
   columns: [
     { name: "column1", alignment: "left", color: "red" }, //with alignment and color
     { name: "column2", alignment: "right" },

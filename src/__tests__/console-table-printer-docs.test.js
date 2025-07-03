@@ -66,9 +66,9 @@ describe('Console Table Printer Documentation Examples', () => {
       expect(table).toBeInstanceOf(Table);
     });
 
-    test('should handle complex table constructor with fatBorder style', () => {
+    test('should handle complex table constructor with default style', () => {
       const table = new Table({
-        style: "fatBorder", //style of border of the table, (optional)
+        // Default style will be used (omit style property for default borders)
         columns: [
           { name: "column1", alignment: "left", color: "red" }, //with alignment and color
           { name: "column2", alignment: "right" },
