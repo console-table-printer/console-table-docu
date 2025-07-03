@@ -26,7 +26,7 @@ interface TableOptions {
   rows?: RowData[];
   
   // Table styling
-  style?: TableStyle | CustomStyle;
+  style?: CustomStyle;
   
   // Sorting function
   sort?: (row1: RowData, row2: RowData) => number;
@@ -72,8 +72,8 @@ const table = new Table({
     { id: 2, name: "Jane", age: 30 }
   ],
   
-  // Table styling
-  style: "fatBorder",
+  // Table styling (using default style)
+  // style: customStyleObject, // Use custom style object if needed
   title: "Employee Directory",
   
   // Sorting by age in descending order
@@ -396,20 +396,22 @@ const table = new Table({
 
 Pre-defined table border styles.
 
-```typescript
-type TableStyle = "fatBorder" | "thinBorder" | "noBorder";
-```
+The style property accepts a `TableStyleDetails` object or can be omitted to use the default style.
 
 **Examples:**
 ```javascript
-// Fat border (thick lines)
-const table = new Table({ style: "fatBorder" });
+// Default border style (will use built-in default style)
+const table = new Table();
 
-// Thin border (thin lines)
-const table = new Table({ style: "thinBorder" });
-
-// No border
-const table = new Table({ style: "noBorder" });
+// Custom border style
+const table = new Table({ 
+  style: {
+    headerTop: { left: "┌", mid: "┬", right: "┐", other: "─" },
+    headerBottom: { left: "├", mid: "┼", right: "┤", other: "─" },
+    tableBottom: { left: "└", mid: "┴", right: "┘", other: "─" },
+    vertical: "│"
+  }
+});
 ```
 
 ## Function Signatures

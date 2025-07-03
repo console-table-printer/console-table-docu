@@ -87,7 +87,7 @@ const table = new Table({
     { name: "name", alignment: "center" },
     { name: "age", alignment: "right", color: "green" }
   ],
-  style: "fatBorder",
+  // Default style will be used (omit style property for default borders)
   title: "User Data",
   sort: (row1, row2) => row1.id - row2.id,
   filter: (row) => row.age >= 18
@@ -175,7 +175,7 @@ const table = new Table({
   ],
   
   // Table styling
-  style: "fatBorder",
+  // Default style will be used (omit style property for default borders)
   title: "Employee Directory",
   
   // Sorting by age in descending order
