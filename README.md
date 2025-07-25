@@ -1,5 +1,6 @@
 # Documentation for Console Table Printer
 
+[![CI](https://github.com/console-table-printer/console-table-docu/workflows/CI/badge.svg)](https://github.com/console-table-printer/console-table-docu/actions)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/19df54dc-98e0-42a3-a348-1d54477f6522/deploy-status)](https://app.netlify.com/sites/console-table/deploys)
 [![codecov](https://codecov.io/gh/console-table-printer/console-table-docu/graph/badge.svg?token=GAABSQBCLG)](https://codecov.io/gh/console-table-printer/console-table-docu)
 [![Cypress Tests](https://github.com/console-table-printer/console-table-docu/actions/workflows/cypress.yml/badge.svg)](https://github.com/console-table-printer/console-table-docu/actions/workflows/cypress.yml)
