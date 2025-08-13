@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 This is an optional param. Pass the sort function that will be used on each row to sort them. This sort function is simple Array element sort function
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   columns: [{ name: "index" }, { name: "text" }, { name: "value" }],
@@ -36,7 +36,7 @@ p.printTable();
 This is an optional param. Pass the filter function that will be used on each row to filter them
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   columns: [{ name: "index" }, { name: "text" }, { name: "value" }],
@@ -61,7 +61,7 @@ p.printTable();
 ### Multi-Level Sorting
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const table = new Table({
   columns: [
@@ -95,7 +95,7 @@ table.printTable();
 ### Complex Filtering
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const table = new Table({
   columns: [

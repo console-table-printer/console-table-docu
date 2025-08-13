@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Special chars might have different length of chars in your console. For that if you want to declare yourself the length of the character then you should use charLength option.
 
 ```javascript
-import { Table } from "console-table-printer";
+import { Table } from 'console-table-printer';
 const bundle = new Table({
   title: "My Table",
   charLength: { "👍": 2, "✅": 2 },

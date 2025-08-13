@@ -11,7 +11,7 @@ Sometimes you need a new column added automatically whose val is dependent on ot
 ## Basic Example
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 const chalk = require("chalk");
 
 const p = new Table({
@@ -74,7 +74,7 @@ The computed column function can take three parameters:
 Here's a simple example showing how to use each parameter:
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   columns: [
@@ -129,7 +129,7 @@ The output will show each student's score, their pass/fail status, student numbe
 ### Using Row Index for Ranking
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const table = new Table({
   columns: [
@@ -165,7 +165,7 @@ table.printTable();
 ### Complex Computations with Multiple Subjects
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const table = new Table({
   columns: [

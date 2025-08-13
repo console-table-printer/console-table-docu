@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 You can also create a new Table instance and print it like this
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 //Create a table
 const p = new Table();

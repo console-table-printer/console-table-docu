@@ -8,7 +8,7 @@ You can easily import these in typescript. All basic functions Table and printTa
 
 ```typescript
 // highlight-next-line
-import { printTable, Table } from "console-table-printer";
+import { printTable, Table } from 'console-table-printer';
 ```
 
 There are types for ALIGNMENT and color

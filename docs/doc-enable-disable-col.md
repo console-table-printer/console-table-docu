@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Optional param. Pass the names of columns as list. Use it when your json data contains so many garbage that you want only few columns to be visible.
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   // highlight-next-line
@@ -47,7 +47,7 @@ p.printTable();
 This one was good incase you a short listed disabled columns.
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   // highlight-next-line

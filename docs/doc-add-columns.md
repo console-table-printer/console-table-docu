@@ -15,7 +15,7 @@ There are several ways to add columns to your table. You can add them one by one
 You can add columns individually using the `addColumn` method. This gives you fine-grained control over each column's properties.
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 // Initialize table with one column
 const p = new Table({
@@ -39,7 +39,7 @@ p.printTable();
 For efficiency, you can add multiple columns simultaneously using the `addColumns` method.
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table();
 
@@ -65,7 +65,7 @@ p.printTable();
 You can chain `addColumn` calls for a more fluent API experience.
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table();
 
@@ -86,7 +86,7 @@ p.printTable();
 You can combine different column addition methods to build your table structure in the most convenient way.
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table();
 

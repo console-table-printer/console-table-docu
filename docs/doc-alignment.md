@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 You can put properties for alignment
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   columns: [

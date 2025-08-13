@@ -22,7 +22,7 @@ Prints a table directly from an array of data objects without creating a Table i
 
 **Example:**
 ```javascript
-const { printTable } = require("console-table-printer");
+import { printTable } from 'console-table-printer';
 
 const data = [
   { id: 1, name: "John", age: 25 },
@@ -34,7 +34,7 @@ printTable(data);
 
 **With Options:**
 ```javascript
-const { printTable } = require("console-table-printer");
+import { printTable } from 'console-table-printer';
 
 const data = [
   { id: 1, name: "John", age: 25, status: "active" },
@@ -134,7 +134,7 @@ interface TableOptions {
 ### Complete Example
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 // Create table with comprehensive configuration
 const table = new Table({
