@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 This way you can render just the pure output as Array of string without any kind of special chars included.
 
 ```js
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   columns: [

@@ -547,7 +547,7 @@ enum ALIGNMENT {
 
 **Usage:**
 ```typescript
-import { ALIGNMENT } from "console-table-printer";
+import { ALIGNMENT } from 'console-table-printer';
 
 const table = new Table({
   columns: [
@@ -575,7 +575,7 @@ enum COLOR {
 
 **Usage:**
 ```typescript
-import { COLOR } from "console-table-printer";
+import { COLOR } from 'console-table-printer';
 
 const table = new Table({
   columns: [

@@ -11,7 +11,7 @@ You can configure the border of the table by passing style in Table constructor
 <img alt="Screenshot" src={useBaseUrl('img/examples/doc-border-design/fat.png')}/>
 
 ```js
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   style: {

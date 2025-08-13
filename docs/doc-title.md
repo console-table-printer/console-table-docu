@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Currently all table Titles will be White Bold style and aligned center
 
 ```javascript
-const { printTable, Table } = require("console-table-printer");
+import { printTable, Table } from 'console-table-printer';
 
 const p = new Table({
   // highlight-next-line

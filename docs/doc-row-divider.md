@@ -12,7 +12,7 @@ You can split your table into logical sections by adding row dividers. This is u
 ### Basic Row Divider
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const table = new Table();
 
@@ -31,7 +31,7 @@ table.printTable();
 You can add multiple dividers to create several sections in your table:
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const table = new Table();
 
@@ -57,7 +57,7 @@ table.printTable();
 Row dividers are particularly useful when displaying summaries or computed values:
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const table = new Table();
 

@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 ### One row at a time
 
 ```js
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table();
 
@@ -31,7 +31,7 @@ p.printTable();
 ## Batch Row Adding
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table();
 
@@ -50,7 +50,7 @@ p.printTable();
 Adding row function can be chained
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table();
 

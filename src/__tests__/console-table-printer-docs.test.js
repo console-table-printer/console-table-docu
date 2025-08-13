@@ -4,7 +4,7 @@
  * If any test fails, it indicates the documentation needs to be updated
  */
 
-const { printTable, Table } = require("console-table-printer");
+import { printTable, Table } from 'console-table-printer';
 
 // Mock console.log to capture output
 const originalConsoleLog = console.log;
@@ -562,7 +562,6 @@ describe('Console Table Printer Documentation Examples', () => {
 
   describe('Emojis and Special Characters (doc-emojis-special-chars.md)', () => {
     test('should handle special character length', () => {
-      const { Table } = require("console-table-printer");
       const bundle = new Table({
         title: "My Table",
         charLength: { "👍": 2, "✅": 2 },

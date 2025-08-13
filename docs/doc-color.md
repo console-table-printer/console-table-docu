@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 You can put color as either entire Row or entire column
 
 ```js
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   columns: [
@@ -41,7 +41,7 @@ p.printTable();
 ## Batch Row coloring
 
 ```javascript
-const { printTable, Table } = require("console-table-printer");
+import { printTable, Table } from 'console-table-printer';
 
 const p = new Table();
 
@@ -78,7 +78,7 @@ p.printTable();
 You can also choose to have your own colors
 
 ```javascript
-const { printTable, Table } = require("console-table-printer");
+import { printTable, Table } from 'console-table-printer';
 
 const p = new Table({
   columns: [

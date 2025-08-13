@@ -13,7 +13,7 @@ Limit the max Length of each column using this.
 By default all lines are printed in single line. But in case you want to put max width of column lines will be splitted into multiples.
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   columns: [
@@ -57,7 +57,7 @@ p.printTable();
 You can also use minLen accordingly
 
 ```javascript
-const { Table } = require("console-table-printer");
+import { Table } from 'console-table-printer';
 
 const p = new Table({
   columns: [

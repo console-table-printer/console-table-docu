@@ -16,7 +16,7 @@ npm install --save console-table-printer
 ## Basic Example
 
 ```javascript
-const { printTable } = require("console-table-printer");
+import { printTable } from 'console-table-printer';
 
 //Create a table
 const testCases = [
