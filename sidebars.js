@@ -7,6 +7,7 @@ module.exports = {
       "doc-row-divider",
       "doc-add-columns",
       "doc-color",
+      'doc-transform',
       "doc-no-ascii",
       "doc-sort-filter",
       "doc-alignment",
