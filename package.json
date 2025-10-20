@@ -16,13 +16,13 @@
     "test-integration": "start-server-and-test start http://localhost:3000 cy:run"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.8.1",
-    "@docusaurus/preset-classic": "^3.8.1",
-    "@docusaurus/remark-plugin-npm2yarn": "3.8.1",
-    "chalk": "^5.5.0",
-    "console-table-printer": "^2.14.6",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
+    "@docusaurus/remark-plugin-npm2yarn": "3.9.2",
+    "chalk": "^5.6.2",
+    "console-table-printer": "^2.15.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "styled-components": "^6.1.19"
   },
   "browserslist": {
@@ -38,29 +38,29 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.28.0",
-    "@babel/preset-env": "^7.28.0",
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
-    "@docusaurus/module-type-aliases": "^3.8.1",
-    "@docusaurus/tsconfig": "3.8.1",
+    "@docusaurus/module-type-aliases": "^3.9.2",
+    "@docusaurus/tsconfig": "3.9.2",
     "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^30.0.0",
-    "@types/react": "^19.1.10",
+    "@types/react": "^19.2.2",
     "@types/react-helmet": "^6.1.11",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.34",
-    "babel-jest": "^30.0.5",
+    "babel-jest": "^30.2.0",
     "codecov": "^3.8.3",
-    "cypress": "^14.5.4",
+    "cypress": "^15.5.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^30.0.5",
-    "jest-environment-jsdom": "^30.0.5",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "jest-junit": "^16.0.0",
-    "start-server-and-test": "^2.0.13",
-    "typescript": "^5.9.2"
+    "start-server-and-test": "^2.1.2",
+    "typescript": "^5.9.3"
   }
 }
