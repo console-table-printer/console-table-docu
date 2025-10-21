@@ -31,8 +31,7 @@ p.addRow({ original: 'test', uppercase: 'test' });
 
 p.printTable();
 ```
-
-The `uppercase` column displays the transformed values while the original data remains unchanged.
+<img alt="Screenshot" src={useBaseUrl('img/examples/doc-transform/ExampleUpper.png')}/>
 
 ## Currency Formatting
 
@@ -62,4 +61,4 @@ p.addRows([
 p.printTable();
 ```
 
-This transforms raw numbers like `3.5` into formatted currency like `$3.50`.
+<img alt="Screenshot" src={useBaseUrl('img/examples/doc-transform/ExamplePrice.png')}/>

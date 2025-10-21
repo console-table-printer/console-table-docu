@@ -123,6 +123,13 @@ describe("Testing Each Documentation Page", () => {
         "Change table title",
         "Uninstallation"
       ]
+    },
+    {
+      title: "Transform Functions",
+      headlines: [
+        "Basic String Transform",
+        "Currency Formatting"
+      ]
     }
   ];
 
@@ -145,6 +152,12 @@ describe("Testing Each Documentation Page", () => {
       if (page.title === "Special Chars and emojis") {
         // Verify screenshot presence
         cy.get('img[alt="Screenshot"]').should('have.length.at.least', 2);
+      }
+
+      // Special check for Transform Functions page
+      if (page.title === "Transform Functions") {
+        // Verify screenshot presence - should have 2 screenshots
+        cy.get('img[alt="Screenshot"]').should('have.length', 2);
       }
     });
   });
