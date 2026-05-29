@@ -66,3 +66,43 @@ p.addRow({ Weight: "1kg", text: "red wine", value: 10.212 })
   .addRow({ Weight: 3, text: "rosa hemd wie immer", value: 100 });
 p.printTable();
 ```
+
+## Clearing Rows
+
+Use `clearRows()` when you want to remove the current row data and reuse the same table instance. The table keeps its columns and configuration, so you can add fresh rows without rebuilding the table.
+
+`clearRows()` returns the table instance, so it can be used in a method chain.
+
+```javascript
+import { Table } from 'console-table-printer';
+
+const p = new Table(["id", "status"])
+  .addRows([
+    { id: 1, status: "Queued" },
+    { id: 2, status: "Running" },
+  ])
+  .clearRows()
+  .addRows([{ id: 3, status: "Done" }]);
+
+p.printTable();
+```
+
+Rows added during table creation can also be cleared.
+
+```javascript
+import { Table } from 'console-table-printer';
+
+const p = new Table({
+  columns: [{ name: "task" }, { name: "state" }],
+  rows: [
+    { task: "fetch", state: "pending" },
+    { task: "build", state: "running" },
+  ],
+});
+
+p.clearRows().addRow({ task: "deploy", state: "done" });
+
+p.printTable();
+```
+
+After calling `clearRows()`, rendering the table shows the existing headers with an empty body until new rows are added.

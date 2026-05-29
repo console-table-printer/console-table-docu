@@ -20,7 +20,7 @@ describe("Testing Each Documentation Page", () => {
     {
       url: "/docs/doc-adding-rows",
       title: "Adding Rows",
-      headlines: ["One row at a time", "Batch Row Adding", "Chained Row adding"]
+      headlines: ["One row at a time", "Batch Row Adding", "Chained Row adding", "Clearing Rows"]
     },
     {
       url: "/docs/doc-row-divider",
