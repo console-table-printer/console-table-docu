@@ -15,7 +15,7 @@ describe("Testing Each Documentation Page", () => {
     },
     {
       title: "Adding Rows",
-      headlines: ["One row at a time", "Batch Row Adding", "Chained Row adding"]
+      headlines: ["One row at a time", "Batch Row Adding", "Chained Row adding", "Clearing Rows"]
     },
     {
       title: "Row Dividers",

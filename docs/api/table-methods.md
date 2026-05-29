@@ -98,6 +98,58 @@ table.addRows([
 ]);
 ```
 
+### clearRows
+
+### `clearRows(): Table`
+
+Removes all rows from the table while keeping the table columns and configuration.
+
+Use this when the table structure should stay the same, but the row data needs to be replaced or reset.
+
+**Parameters:** None
+
+**Returns:** `Table` instance (for method chaining)
+
+**Example:**
+```javascript
+const table = new Table(["id", "status"]);
+
+table.addRows([
+  { id: 1, status: "Queued" },
+  { id: 2, status: "Running" }
+]);
+
+table.clearRows();
+table.addRow({ id: 3, status: "Done" });
+table.printTable();
+```
+
+**Chaining:**
+```javascript
+const table = new Table(["id", "status"])
+  .addRows([
+    { id: 1, status: "Queued" },
+    { id: 2, status: "Running" }
+  ])
+  .clearRows()
+  .addRows([{ id: 3, status: "Done" }]);
+```
+
+**Clearing Constructor Rows:**
+```javascript
+const table = new Table({
+  columns: [{ name: "task" }, { name: "state" }],
+  rows: [
+    { task: "fetch", state: "pending" },
+    { task: "build", state: "running" }
+  ]
+});
+
+table.clearRows().addRow({ task: "deploy", state: "done" });
+```
+
+After rows are cleared, `render()` and `printTable()` keep the existing table headers and render an empty body until new rows are added.
+
 ## Column Management Methods
 
 ### addColumn
