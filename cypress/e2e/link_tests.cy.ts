@@ -5,7 +5,7 @@ interface SidebarLink {
 
 describe("Link Tests", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("/");
   });
 
   describe("Navigation Links", () => {
@@ -22,27 +22,24 @@ describe("Link Tests", () => {
     });
 
     it("should have working footer links", () => {
-      // Test Learn section links
-      cy.contains("Quick Start").click();
-      cy.url().should("include", "/docs");
-      cy.go("back");
+      const footerLinks: SidebarLink[] = [
+        { text: "Quick Start", url: "/docs" },
+        { text: "Getting Started With CLI", url: "/docs/doc-cli-install-quick-start" },
+        { text: "Color", url: "/docs/doc-color" },
+        { text: "Border", url: "/docs/doc-border-design" },
+        { text: "Alignment", url: "/docs/doc-alignment" },
+      ];
 
-      cy.contains("Getting Started With CLI").click();
-      cy.url().should("include", "/docs/doc-cli-install-quick-start");
-      cy.go("back");
+      footerLinks.forEach((link: SidebarLink) => {
+        cy.visit("/");
+        cy.get("footer")
+          .contains("a", link.text)
+          .should("have.attr", "href")
+          .and("include", link.url);
 
-      // Test Decorate section links
-      cy.contains("Color").click();
-      cy.url().should("include", "/docs/doc-color");
-      cy.go("back");
-
-      cy.contains("Border").click();
-      cy.url().should("include", "/docs/doc-border-design");
-      cy.go("back");
-
-      cy.contains("Alignment").click();
-      cy.url().should("include", "/docs/doc-alignment");
-      cy.go("back");
+        cy.get("footer").contains("a", link.text).click();
+        cy.url().should("include", link.url);
+      });
     });
 
     it("should have working external links in footer", () => {
@@ -90,7 +87,7 @@ describe("Link Tests", () => {
       ];
 
       sidebarLinks.forEach((link: SidebarLink) => {
-        cy.contains(link.text).click();
+        cy.get(".theme-doc-sidebar-container").contains("a", link.text).click();
         cy.url().should("include", link.url);
         // Verify page content is loaded
         cy.get("main").should("exist");
@@ -120,4 +117,4 @@ describe("Link Tests", () => {
         .should("have.attr", "rel", "noopener noreferrer");
     });
   });
-}); 
+});

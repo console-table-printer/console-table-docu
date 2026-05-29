@@ -105,12 +105,8 @@ describe("Testing Each Documentation Page", () => {
       headlines: ["You can easily import these in typescript"]
     },
     {
-      title: "Quick Start",
-      headlines: ["Synopsis", "Installation", "Basic Example", "Detailed usage"]
-    },
-    {
       title: "CLI Quick Start",
-      headlines: ["Installation", "Basic Example"]
+      headlines: ["Synopsis", "Installation", "Basic Example", "Detailed usage"]
     },
     {
       title: "Homebrew",
@@ -135,13 +131,13 @@ describe("Testing Each Documentation Page", () => {
 
   beforeEach(() => {
     // Go to docs page before each test
-    cy.visit("http://localhost:3000");
+    cy.visit("/");
     cy.contains("GET STARTED").click();
   });
 
   pages.forEach((page: PageTestInterface) => {
     it(`${page.title} page contains correct headlines`, () => {
-      cy.contains(page.title).click();
+      cy.get(".theme-doc-sidebar-container").contains("a", page.title).click();
       
       // Check each headline
       page.headlines.forEach((headline: string) => {
@@ -161,4 +157,4 @@ describe("Testing Each Documentation Page", () => {
       }
     });
   });
-}); 
+});

@@ -1,6 +1,6 @@
 describe("Integration Tests", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("/");
   });
 
   it("Home page is loaded", () => {
@@ -31,9 +31,13 @@ describe("Integration Tests", () => {
     // homepage get started button clicked
     cy.contains("GET STARTED").click();
 
-    // show default docs page
-    cy.contains("Quick Start").click();
+    // Navigate through the sidebar link. The page title is "Quick Start",
+    // but the docs page also has footer links with the same text.
+    cy.get(".theme-doc-sidebar-container")
+      .contains("a", "CLI Quick Start")
+      .click();
 
+    cy.url().should("include", "/docs/doc-cli-install-quick-start");
     cy.contains("Detailed usage");
   });
-}); 
+});

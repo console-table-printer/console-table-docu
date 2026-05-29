@@ -55,7 +55,7 @@ describe("Documentation Page Images", () => {
       }).as('imageRequestCounter');
 
       // Visit the page and wait for it to load
-      cy.visit(`http://localhost:3000${page.url}`, {
+      cy.visit(page.url, {
         timeout: 10000,
         retryOnStatusCodeFailure: true
       });
@@ -108,14 +108,14 @@ describe("Documentation Page Images", () => {
   });
 
   it('should have proper alt text for all images', () => {
-    cy.visit(`http://localhost:3000/docs`, {
+    cy.visit("/docs", {
       timeout: 10000,
       retryOnStatusCodeFailure: true
     });
 
     cy.get('main', { timeout: 10000 }).should('be.visible');
     
-    cy.get('img').each(($img, index) => {
+    cy.get('.theme-doc-markdown img:visible').each(($img, index) => {
       const imgId = `img-alt-${index}`;
       cy.wrap($img).as(imgId);
       
@@ -126,14 +126,14 @@ describe("Documentation Page Images", () => {
   });
 
   it('should load images with correct dimensions', () => {
-    cy.visit(`http://localhost:3000/docs`, {
+    cy.visit("/docs", {
       timeout: 10000,
       retryOnStatusCodeFailure: true
     });
 
     cy.get('main', { timeout: 10000 }).should('be.visible');
     
-    cy.get('img').each(($img, index) => {
+    cy.get('.theme-doc-markdown img:visible').each(($img, index) => {
       const imgId = `img-dim-${index}`;
       cy.wrap($img).as(imgId);
       

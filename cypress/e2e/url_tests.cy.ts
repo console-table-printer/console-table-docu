@@ -140,13 +140,9 @@ describe("Testing Each Documentation Page", () => {
     }
   ];
 
-  beforeEach(() => {
-    cy.visit("http://localhost:3000");
-  });
-
   pages.forEach((page: PageTest) => {
     it(`${page.title} page contains correct headlines`, () => {
-      cy.visit(`http://localhost:3000${page.url}`);
+      cy.visit(page.url);
       
       // Check each headline
       page.headlines.forEach((headline: string) => {
