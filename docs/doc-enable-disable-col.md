@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Enable
 
-Optional param. Pass the names of columns as list. Use it when your json data contains so many garbage that you want only few columns to be visible.
+Optional param. Pass the names of columns as a list. Use it when your JSON data contains extra fields and you want only a few columns to be visible.
 
 ```javascript
 import { Table } from 'console-table-printer';
@@ -44,7 +44,7 @@ p.printTable();
 
 ## Disable
 
-This one was good incase you a short listed disabled columns.
+This one is good in case you have a short list of disabled columns.
 
 ```javascript
 import { Table } from 'console-table-printer';

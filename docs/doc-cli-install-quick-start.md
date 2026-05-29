@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 ## Synopsis
 
-Printing Simple Table on your bash terminal. Its useful when you want to present some tables on console.
+Printing Simple Table on your bash terminal. It's useful when you want to present tables on the console.
 
 ## Installation
 

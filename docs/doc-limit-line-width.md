@@ -8,9 +8,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## maxLen
 
-Limit the max Length of each column using this.
+Limit the max length of each column using this.
 
-By default all lines are printed in single line. But in case you want to put max width of column lines will be splitted into multiples.
+By default, all lines are printed in a single line. But in case you want to put a max width on column lines, they will be split into multiple lines.
 
 ```javascript
 import { Table } from 'console-table-printer';

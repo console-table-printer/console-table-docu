@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Special chars
 
-Special chars might have different length of chars in your console. For that if you want to declare yourself the length of the character then you should use charLength option.
+Special chars might have different character lengths in your console. If you want to declare the length of a character yourself, use the charLength option.
 
 ```javascript
 import { Table } from 'console-table-printer';
