@@ -56,7 +56,7 @@ Notes:
 - `yarn build` catches Docusaurus build errors, broken imports, malformed Markdown/MDX, and missing static assets.
 - `yarn test` runs Jest in `jsdom` using `jest.config.js`.
 - `yarn test-integration` starts the Docusaurus dev server and runs Cypress against `http://localhost:3000`.
-- Netlify currently uses Node `22.16.0` from `netlify.toml`.
+- Netlify currently uses Node `26.12.1` from `netlify.toml`.
 
 ## Documentation Workflow
 
