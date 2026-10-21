@@ -15,26 +15,20 @@ jobs:
       contents: read
       pull-requests: write
     
-    strategy:
-      matrix:
-        node-version: [24.x]  # Latest LTS version
-      # Don't cancel other matrix jobs if one fails
-      fail-fast: false
-    
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
           cache: 'yarn'
       
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       
       - name: Get Cypress cache
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         id: cypress-cache
         with:
           path: ~/.cache/Cypress
@@ -95,4 +89,4 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: comment
-            }); 
+            });

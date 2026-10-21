@@ -16,12 +16,12 @@
     "test-integration": "start-server-and-test start http://localhost:3000 cy:run"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.10.1",
-    "@docusaurus/preset-classic": "^3.10.1",
-    "@docusaurus/remark-plugin-npm2yarn": "3.10.1",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "styled-components": "^6.4.2"
+    "@docusaurus/core": "^3.10.2",
+    "@docusaurus/preset-classic": "^3.10.2",
+    "@docusaurus/remark-plugin-npm2yarn": "3.10.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "styled-components": "^6.6.0"
   },
   "browserslist": {
     "production": [
@@ -36,29 +36,33 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
-    "@babel/preset-typescript": "^7.29.7",
-    "@docusaurus/module-type-aliases": "^3.10.1",
-    "@docusaurus/tsconfig": "3.10.1",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
+    "@babel/core": "^8.0.7",
+    "@babel/preset-env": "^8.0.7",
+    "@babel/preset-react": "^8.0.1",
+    "@babel/preset-typescript": "^8.0.7",
+    "@docusaurus/module-type-aliases": "^3.10.2",
+    "@docusaurus/tsconfig": "3.10.2",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
     "@types/jest": "^30.0.0",
-    "@types/react": "^19.2.17",
+    "@types/react": "^19.3.0",
     "@types/react-helmet": "^6.1.11",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.36",
-    "babel-jest": "^30.4.1",
+    "babel-jest": "^30.5.2",
     "codecov": "^3.8.3",
-    "cypress": "^15.17.0",
+    "cypress": "^16.2.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.4.1",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
     "jest-junit": "^17.0.0",
-    "start-server-and-test": "^3.0.11",
-    "typescript": "^6.0.3"
-  }
+    "start-server-and-test": "^3.0.13",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=26.12.1"
+  },
+  "packageManager": "yarn@1.22.22"
 }
