@@ -46,11 +46,8 @@ describe("Documentation Page Images", () => {
 
   pages.forEach((page: Page) => {
     it(`should load all images properly on ${page.name} page`, () => {
-      let imageRequestCount = 0;
-      
-      // Count image requests
+      // Track image requests
       cy.intercept('GET', '/img/**/*', (req) => {
-        imageRequestCount++;
         req.continue();
       }).as('imageRequestCounter');
 
@@ -63,29 +60,15 @@ describe("Documentation Page Images", () => {
       // Wait for main content to be visible
       cy.get('main', { timeout: 10000 }).should('be.visible');
 
-      // First wait for all images to be present in the DOM
-      cy.get('img', { timeout: 10000 }).should('exist');
-
-      // Get all images and verify their loading
-      cy.get('img').then(($images) => {
-        // Verify each image
-        cy.wrap($images).each(($img, index) => {
-          // Create a unique alias for this image
-          const imgId = `img-${index}`;
-          cy.wrap($img).as(imgId);
-          
-          // Wait for the image to be loaded
-          cy.get(`@${imgId}`).should(($img) => {
-            const img = $img[0] as HTMLImageElement;
-            expect(img.complete).to.be.true;
-            expect(img.naturalWidth).to.be.greaterThan(0);
-            expect(img.naturalHeight).to.be.greaterThan(0);
-          });
-          
-          // Verify src attribute
-          cy.get(`@${imgId}`)
-            .should('have.attr', 'src')
-            .and('not.be.empty');
+      // Keep assertions on a query so retries use the current DOM after hydration.
+      cy.get('img', { timeout: 10000 }).should(($images) => {
+        expect($images.length).to.be.greaterThan(0);
+        $images.each((_, element) => {
+          const img = element as HTMLImageElement;
+          expect(img.getAttribute('src'), 'image source').to.be.a('string').and.not.be.empty;
+          expect(img.complete, img.src).to.be.true;
+          expect(img.naturalWidth, img.src).to.be.greaterThan(0);
+          expect(img.naturalHeight, img.src).to.be.greaterThan(0);
         });
       });
 
@@ -115,13 +98,10 @@ describe("Documentation Page Images", () => {
 
     cy.get('main', { timeout: 10000 }).should('be.visible');
     
-    cy.get('.theme-doc-markdown img:visible').each(($img, index) => {
-      const imgId = `img-alt-${index}`;
-      cy.wrap($img).as(imgId);
-      
-      cy.get(`@${imgId}`)
-        .should('have.attr', 'alt')
-        .and('not.be.empty');
+    cy.get('.theme-doc-markdown img:visible').should(($images) => {
+      $images.each((_, img) => {
+        expect(img.getAttribute('alt'), 'image alt text').to.be.a('string').and.not.be.empty;
+      });
     });
   });
 
@@ -133,22 +113,13 @@ describe("Documentation Page Images", () => {
 
     cy.get('main', { timeout: 10000 }).should('be.visible');
     
-    cy.get('.theme-doc-markdown img:visible').each(($img, index) => {
-      const imgId = `img-dim-${index}`;
-      cy.wrap($img).as(imgId);
-      
-      cy.get(`@${imgId}`).then(($img) => {
-        const img = $img[0] as HTMLImageElement;
-        const naturalWidth = img.naturalWidth;
-        const naturalHeight = img.naturalHeight;
-        
-        // Images should have reasonable dimensions
-        expect(naturalWidth).to.be.within(50, 2000);
-        expect(naturalHeight).to.be.within(50, 2000);
-        
-        // Aspect ratio should be reasonable
-        const aspectRatio = naturalWidth / naturalHeight;
-        expect(aspectRatio).to.be.within(0.1, 10);
+    cy.get('.theme-doc-markdown img:visible').should(($images) => {
+      $images.each((_, element) => {
+        const img = element as HTMLImageElement;
+        expect(img.complete, img.src).to.be.true;
+        expect(img.naturalWidth, img.src).to.be.within(50, 2000);
+        expect(img.naturalHeight, img.src).to.be.within(50, 2000);
+        expect(img.naturalWidth / img.naturalHeight, img.src).to.be.within(0.1, 10);
       });
     });
   });
