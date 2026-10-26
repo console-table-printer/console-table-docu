@@ -2,7 +2,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import React from "react";
 
 import sources from "../../utils/sources";
-import { FeatureImage, Features } from "./styles";
+import styles from "./styles.module.css";
 
 const Feature = ({ imageUrl, title, description }) => {
   const imgUrl = useBaseUrl(imageUrl);
@@ -10,7 +10,13 @@ const Feature = ({ imageUrl, title, description }) => {
     <div className={"col col--4"}>
       {imgUrl && (
         <div className="text--center">
-          <FeatureImage src={imgUrl} alt={title} />
+          <img
+            className={styles.FeatureImage}
+            width={200}
+            height={200}
+            src={imgUrl}
+            alt={title}
+          />
         </div>
       )}
       <h3>{title}</h3>
@@ -23,7 +29,7 @@ const Sources = () => {
   return (
     <div>
       {sources && sources.length > 0 && (
-        <Features>
+        <section className={styles.Features}>
           <div className="container">
             <div className="row">
               {sources.map((props, idx) => (
@@ -31,7 +37,7 @@ const Sources = () => {
               ))}
             </div>
           </div>
-        </Features>
+        </section>
       )}
     </div>
   );

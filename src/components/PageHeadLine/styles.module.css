@@ -1,0 +1,39 @@
+.Headline {
+  background-color: #2b3137;
+  padding: 50px;
+  text-align: center;
+}
+
+.HeadlineSub {
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.HeadlineText {
+  font-size: 60px;
+  color: white;
+}
+
+.ColoredWords {
+  color: rgb(50, 120, 230);
+}
+
+.GetStartButton a {
+  padding: 20px 40px;
+  border: 2px solid rgb(50, 120, 230);
+  display: inline-block;
+  border-radius: 6px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.GetStartButton a:hover {
+  text-decoration: none;
+  color: rgb(50, 120, 230);
+}
+
+.ProductLogoHomePage {
+  float: right;
+  width: 200px;
+}
