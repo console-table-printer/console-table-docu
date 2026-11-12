@@ -22,7 +22,7 @@ Printing Simple Table on your bash terminal. It's useful when you want to presen
 <TabItem value="npm">
 
 ```bash
-npm install --global table-printer-cli
+yarn global add table-printer-cli
 ```
 
 </TabItem>
